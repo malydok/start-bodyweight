@@ -1,10 +1,10 @@
 import React from 'react';
-import CurrentExcercises from '../contexts/CurrentExcercises';
+import { ExcercisesContext } from '../contexts/excercises-context';
 import { Card, Col, Row } from 'antd';
 
 const ExcercisesByType = ({ type, levels }) => (
   <CurrentExcercises.Consumer>
-    {current => (
+    {({ current }) => (
       <Row gutter={16} className="excercises">
         {levels.map((excercise, index) => (
           <Col

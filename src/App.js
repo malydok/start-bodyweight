@@ -1,17 +1,36 @@
 import React, { Component } from 'react';
 import { Layout, Menu, Icon } from 'antd';
-import CurrentExcercises, {
-  DefaultExcercises
-} from './contexts/CurrentExcercises';
-import CurrentExcercisesList from './components/CurrentExcercisesList';
+import {
+  defaultExcercises,
+  ExcercisesContext
+} from './contexts/excercises-context';
+import CurrentExcercisesList from './components/current-excercises-list';
 
 const { SubMenu } = Menu;
 const { Header, Footer, Sider, Content } = Layout;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.updateProgression = (type, newState) => {
+      this.setState(state => ({
+        current: {
+          ...state.current,
+          [type]: newState
+        }
+      }));
+    };
+
+    this.state = {
+      current: defaultExcercises,
+      updateProgression: this.updateProgression
+    };
+  }
+
   render() {
     return (
-      <CurrentExcercises.Provider value={DefaultExcercises}>
+      <ExcercisesContext.Provider value={this.state}>
         <Layout>
           <Header>
             <span style={{ color: 'white' }}>Start bodyweight</span>
@@ -20,10 +39,13 @@ class App extends Component {
             <Sider>
               <Menu
                 mode="inline"
+                theme="dark"
+                selectedKeys="menu1"
                 style={{ height: '100%', borderRight: 0 }}
               >
+                <Menu.Item key="menu1">Your progressions</Menu.Item>
                 <SubMenu
-                  key="menu1"
+                  key="menu2"
                   title={
                     <span>
                       <Icon type="user" />Progressions
@@ -47,7 +69,7 @@ class App extends Component {
           </Layout>
           <Footer>footer</Footer>
         </Layout>
-      </CurrentExcercises.Provider>
+      </ExcercisesContext.Provider>
     );
   }
 }
