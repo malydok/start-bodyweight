@@ -1,32 +1,22 @@
 import React from 'react';
-import { ExcercisesContext } from '../contexts/excercises-context';
-import { Card, Col, Row } from 'antd';
+import { Button } from 'antd';
 
-const ExcercisesByType = ({ type, levels }) => (
-  <CurrentExcercises.Consumer>
-    {({ current }) => (
-      <Row gutter={16} className="excercises">
-        {levels.map((excercise, index) => (
-          <Col
-            span={6}
-            className={
-              current[type] === index ? 'excercise current' : 'excercise'
-            }
-            key={excercise.image}
-          >
-            <Card
-              title="Card title"
-              bordered={false}
-              style={{ marginBottom: '16px' }}
-            >
-              <img src={`/images/${type}/${excercise.image}`} alt="" />
-              <p className="excercise-name">{excercise.name}</p>
-            </Card>
-          </Col>
-        ))}
-      </Row>
-    )}
-  </CurrentExcercises.Consumer>
+import excercises from '../data/excercises';
+
+const ExcercisesByType = ({ type }) => (
+  <React.Fragment>
+    <h1 style={{ marginBottom: 24 }}>Progressions for {type}</h1>
+    {excercises[type].map((excercise, index) => (
+      <div style={{ overflow: 'hidden', marginBottom: 20 }}>
+        <img
+          src={`/images/${type}/${excercise.image}`}
+          style={{ float: 'left', marginRight: 18 }}
+        />
+        {excercise.name}
+        <Button />
+      </div>
+    ))}
+  </React.Fragment>
 );
 
 export default ExcercisesByType;

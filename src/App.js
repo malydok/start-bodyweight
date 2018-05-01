@@ -1,26 +1,68 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Layout, Menu, Icon } from 'antd';
 import {
   defaultExcercises,
   ExcercisesContext
 } from './contexts/excercises-context';
-import CurrentExcercisesList from './components/current-excercises-list';
+import Home from './pages/home';
+import MyProgress from './pages/my-progress';
+import SingleProgression from './pages/single-progression';
+
+import excercises from './data/excercises';
+import capitalizeFirstLetter from './util/capitalize-first-letter';
 
 const { SubMenu } = Menu;
-const { Header, Footer, Sider, Content } = Layout;
+const { Footer, Sider, Content } = Layout;
+
+const NavMenu = () => (
+  <Route
+    render={({ location }) => {
+      return (
+        <Menu
+          mode="inline"
+          theme="dark"
+          defaultSelectedKeys={[location.pathname]}
+          defaultOpenKeys={['progression']}
+        >
+          <Menu.Item key="/">
+            <Link to="/">
+              <Icon type="play-circle-o" />
+              Workout
+            </Link>
+          </Menu.Item>
+          <Menu.Item key="/my-progress">
+            <Link to="/my-progress">
+              <Icon type="schedule" />
+              My progressions
+            </Link>
+          </Menu.Item>
+          <SubMenu
+            key="progression"
+            title={
+              <span>
+                <Icon type="line-chart" />
+                Progressions
+              </span>
+            }
+          >
+            {Object.keys(excercises).map(type => (
+              <Menu.Item key={`/progression/${type}`}>
+                <Link to={`/progression/${type}`}>
+                  {capitalizeFirstLetter(type)}
+                </Link>
+              </Menu.Item>
+            ))}
+          </SubMenu>
+        </Menu>
+      );
+    }}
+  />
+);
 
 class App extends Component {
   constructor(props) {
     super(props);
-
-    this.updateProgression = (type, newState) => {
-      this.setState(state => ({
-        current: {
-          ...state.current,
-          [type]: newState
-        }
-      }));
-    };
 
     this.state = {
       current: defaultExcercises,
@@ -28,48 +70,46 @@ class App extends Component {
     };
   }
 
+  updateProgression = (type, newState) => {
+    this.setState(state => ({
+      ...state,
+      current: {
+        ...state.current,
+        [type]: newState
+      }
+    }));
+  };
+
   render() {
     return (
-      <ExcercisesContext.Provider value={this.state}>
-        <Layout>
-          <Header>
-            <span style={{ color: 'white' }}>Start bodyweight</span>
-          </Header>
+      <Router>
+        <ExcercisesContext.Provider value={this.state}>
           <Layout>
-            <Sider>
-              <Menu
-                mode="inline"
-                theme="dark"
-                selectedKeys="menu1"
-                style={{ height: '100%', borderRight: 0 }}
-              >
-                <Menu.Item key="menu1">Your progressions</Menu.Item>
-                <SubMenu
-                  key="menu2"
-                  title={
-                    <span>
-                      <Icon type="user" />Progressions
-                    </span>
-                  }
-                >
-                  <Menu.Item key="prog1">Squats</Menu.Item>
-                  <Menu.Item key="prog2">Pull-ups</Menu.Item>
-                  <Menu.Item key="prog3">Hand stands</Menu.Item>
-                  <Menu.Item key="prog4">Leg raises</Menu.Item>
-                  <Menu.Item key="prog4">Push-ups</Menu.Item>
-                  <Menu.Item key="prog4">Dips</Menu.Item>
-                  <Menu.Item key="prog4">Pull-ups</Menu.Item>
-                  <Menu.Item key="prog4">Planks</Menu.Item>
-                </SubMenu>
-              </Menu>
+            <Sider style={{ minHeight: '100vh' }}>
+              <div style={{ padding: '20px 30px', color: 'white' }}>
+                Start bodyweight
+              </div>
+              <NavMenu />
             </Sider>
-            <Content style={{ padding: '24px' }}>
-              <CurrentExcercisesList />
-            </Content>
+            <Layout>
+              <Content style={{ padding: '30px 50px' }}>
+                <Route exact path="/" component={Home} />
+                <Route path="/my-progress" component={MyProgress} />
+                <Route
+                  path="/progression/:type"
+                  component={SingleProgression}
+                />
+              </Content>
+              <Footer>
+                Content and routine taken from&nbsp;
+                <a href="http://www.startbodyweight.com/">
+                  www.startbodyweight.com
+                </a>.
+              </Footer>
+            </Layout>
           </Layout>
-          <Footer>footer</Footer>
-        </Layout>
-      </ExcercisesContext.Provider>
+        </ExcercisesContext.Provider>
+      </Router>
     );
   }
 }
