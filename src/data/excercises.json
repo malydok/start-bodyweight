@@ -1,426 +1,450 @@
 {
-  "squats": [
-    {
-      "name": "Assisted squat",
-      "image": "1.jpg"
-    },
-    {
-      "name": "Deep assisted squat",
-      "image": "2.jpg"
-    },
-    {
-      "name": "Squat",
-      "image": "3.jpg"
-    },
-    {
-      "name": "Deep squat",
-      "image": "4.jpg"
-    },
-    {
-      "name": "Bulgarian split squat",
-      "image": "5.jpg"
-    },
-    {
-      "name": "Beginner shrimps",
-      "image": "6.jpg"
-    },
-    {
-      "name": "Assisted one-legged squat",
-      "image": "7.jpg"
-    },
-    {
-      "name": "Balance assisted one-legged squat",
-      "image": "8.jpg"
-    },
-    {
-      "name": "Weighted one-legged squat",
-      "image": "9.jpg"
-    },
-    {
-      "name": "One-legged squat",
-      "image": "10.jpg"
-    },
-    {
-      "name": "Renegade pistol",
-      "image": "11.jpg"
-    },
-    {
-      "name": "Intermediate shrimp",
-      "image": "12.jpg"
-    },
-    {
-      "name": "Advanced shrimp",
-      "image": "13.jpg"
-    }
-  ],
-  "pull-ups": [
-    {
-      "name": "Leg assisted pull-up",
-      "image": "1.jpg"
-    },
-    {
-      "name": "Jackknife pull-up",
-      "image": "2.jpg"
-    },
-    {
-      "name": "Eccentric pull-up",
-      "image": "3.jpg"
-    },
-    {
-      "name": "Half pull-up",
-      "image": "4.jpg"
-    },
-    {
-      "name": "Pull-up",
-      "image": "5.jpg"
-    },
-    {
-      "name": "Close grip pull-up",
-      "image": "6.jpg"
-    },
-    {
-      "name": "Wide grip pull-up",
-      "image": "7.jpg"
-    },
-    {
-      "name": "Archer pull-up",
-      "image": "8.jpg"
-    },
-    {
-      "name": "Sternum pull-up",
-      "image": "9.jpg"
-    },
-    {
-      "name": "Belly button pull-up",
-      "image": "10.jpg"
-    },
-    {
-      "name": "One-arm towel-assisted pull-up",
-      "image": "11.jpg"
-    },
-    {
-      "name": "One-arm towel-assisted pull-up and eccentric",
-      "image": "12.jpg"
-    },
-    {
-      "name": "Half one-arm pull-up",
-      "image": "13.jpg"
-    },
-    {
-      "name": "One-arm pull-up",
-      "image": "14.jpg"
-    }
-  ],
-  "handstands": [
-    {
-      "name": "Incline pike push-up",
-      "image": "1.jpg"
-    },
-    {
-      "name": "Incline pike diamond push-up",
-      "image": "2.jpg"
-    },
-    {
-      "name": "Pike push-up",
-      "image": "3.jpg"
-    },
-    {
-      "name": "Pike diamond push-up",
-      "image": "4.jpg"
-    },
-    {
-      "name": "Decline pike push-up",
-      "image": "5.jpg"
-    },
-    {
-      "name": "Decline pike diamond push-up",
-      "image": "6.jpg"
-    },
-    {
-      "name": "Wall-bent waist handstand push-up",
-      "image": "7.jpg"
-    },
-    {
-      "name": "Wall-bent waist handstand diamond push-up",
-      "image": "8.jpg"
-    },
-    {
-      "name": "Wall half-handstand push-up",
-      "image": "9.jpg"
-    },
-    {
-      "name": "Wall handstand push-up",
-      "image": "10.jpg"
-    },
-    {
-      "name": "Wall handstand diamond push-up",
-      "image": "11.jpg"
-    },
-    {
-      "name": "Wall handstand raised push-up",
-      "image": "12.jpg"
-    }
-  ],
-  "leg-raises": [
-    {
-      "name": "Flat knee raise",
-      "image": "1.jpg"
-    },
-    {
-      "name": "Flat bent-leg raise",
-      "image": "2.jpg"
-    },
-    {
-      "name": "Flat straight-leg raise",
-      "image": "3.jpg"
-    },
-    {
-      "name": "Forearm knee raise",
-      "image": "4.jpg"
-    },
-    {
-      "name": "Hanging knee raise",
-      "image": "5.jpg"
-    },
-    {
-      "name": "Forearm bent-leg raise",
-      "image": "6.jpg"
-    },
-    {
-      "name": "Hanging bent-leg raise",
-      "image": "7.jpg"
-    },
-    {
-      "name": "Forearm straight-leg raise",
-      "image": "8.jpg"
-    },
-    {
-      "name": "Hanging straight-leg raise",
-      "image": "9.jpg"
-    },
-    {
-      "name": "Hanging bent-leg V-raise",
-      "image": "10.jpg"
-    },
-    {
-      "name": "Hanging straight-leg V-raise",
-      "image": "11.jpg"
-    },
-    {
-      "name": "Hanging fan raise",
-      "image": "12.jpg"
-    },
-    {
-      "name": "Hanging V-raise windshield-wipers",
-      "image": "13.jpg"
-    },
-    {
-      "name": "One-arm hanging leg raise",
-      "image": "14.jpg"
-    }
-  ],
-  "push-ups": [
-    {
-      "name": "Wall push-up",
-      "image": "1.jpg"
-    },
-    {
-      "name": "Box push-up",
-      "image": "2.jpg"
-    },
-    {
-      "name": "Three-quarter push-up",
-      "image": "3.jpg"
-    },
-    {
-      "name": "Three-quarter push-up + 5s eccentrics",
-      "image": "4.jpg"
-    },
-    {
-      "name": "Push-up",
-      "image": "5.jpg"
-    },
-    {
-      "name": "Elbows-in push-up",
-      "image": "6.jpg"
-    },
-    {
-      "name": "Diamond push-up",
-      "image": "7.jpg"
-    },
-    {
-      "name": "Uneven push-up",
-      "image": "8.jpg"
-    },
-    {
-      "name": "Decline push-up",
-      "image": "9.jpg"
-    },
-    {
-      "name": "Decline elbows-in push-up",
-      "image": "10.jpg"
-    },
-    {
-      "name": "Decline diamond push-up",
-      "image": "11.jpg"
-    },
-    {
-      "name": "Wall one-arm push-up",
-      "image": "12.jpg"
-    },
-    {
-      "name": "Incline one-arm push-up",
-      "image": "13.jpg"
-    },
-    {
-      "name": "One-arm push-up",
-      "image": "14.jpg"
-    },
-    {
-      "name": "Decline one-arm push-up",
-      "image": "15.jpg"
-    }
-  ],
-  "dips": [
-    {
-      "name": "Bent-knee dip",
-      "image": "1.jpg"
-    },
-    {
-      "name": "Straight-leg dip",
-      "image": "2.jpg"
-    },
-    {
-      "name": "One elevated leg, straight-leg dip",
-      "image": "3.jpg"
-    },
-    {
-      "name": "Elevated legs dip",
-      "image": "4.jpg"
-    },
-    {
-      "name": "One extended leg, elevated legs dip",
-      "image": "5.jpg"
-    },
-    {
-      "name": "Legs supported dip",
-      "image": "6.jpg"
-    },
-    {
-      "name": "One-leg supported dip",
-      "image": "7.jpg"
-    },
-    {
-      "name": "Jumping and 5s eccentric dip",
-      "image": "8.jpg"
-    },
-    {
-      "name": "Half-dips",
-      "image": "9.jpg"
-    },
-    {
-      "name": "Dips",
-      "image": "10.jpg"
-    },
-    {
-      "name": "Legs-forward dip",
-      "image": "11.jpg"
-    },
-    {
-      "name": "Modified Russian dip",
-      "image": "12.jpg"
-    },
-    {
-      "name": "Russian dip",
-      "image": "13.jpg"
-    }
-  ],
-  "pulls": [
-    {
-      "name": "Vertical pull",
-      "image": "1.jpg"
-    },
-    {
-      "name": "Vertical pull with a towel",
-      "image": "2.jpg"
-    },
-    {
-      "name": "Inverted rows, bent legs",
-      "image": "3.jpg"
-    },
-    {
-      "name": "Inverted rows, straight legs",
-      "image": "4.jpg"
-    },
-    {
-      "name": "Inverted rows, one leg extended",
-      "image": "5.jpg"
-    },
-    {
-      "name": "Inverted rows, elevated legs",
-      "image": "6.jpg"
-    },
-    {
-      "name": "Inverted rows, elevated legs, one leg extended",
-      "image": "7.jpg"
-    },
-    {
-      "name": "Tuck-knees front-lever row",
-      "image": "8.jpg"
-    },
-    {
-      "name": "Advanced tuck-knees row",
-      "image": "9.jpg"
-    },
-    {
-      "name": "One tuck knee, one leg extended row",
-      "image": "10.jpg"
-    },
-    {
-      "name": "Straddle legs front lever row",
-      "image": "11.jpg"
-    },
-    {
-      "name": "Front lever row",
-      "image": "12.jpg"
-    }
-  ],
-  "planks": [
-    {
-      "name": "Kneeling plank",
-      "image": "1.jpg"
-    },
-    {
-      "name": "Kneeling side plank",
-      "image": "2.jpg"
-    },
-    {
-      "name": "Plank",
-      "image": "3.jpg"
-    },
-    {
-      "name": "Side plank",
-      "image": "4.jpg"
-    },
-    {
-      "name": "Decline plank",
-      "image": "5.jpg"
-    },
-    {
-      "name": "Leg-lift plank",
-      "image": "6.jpg"
-    },
-    {
-      "name": "Arm and leg lift plank",
-      "image": "7.jpg"
-    },
-    {
-      "name": "Arm and leg life side plank",
-      "image": "8.jpg"
-    },
-    {
-      "name": "Wall plank",
-      "image": "9.jpg"
-    }
-  ]
+  "squats": {
+    "url": "http://www.startbodyweight.com/p/squat-progression.html",
+    "progressions": [
+      {
+        "name": "Assisted squat",
+        "image": "1.jpg"
+      },
+      {
+        "name": "Deep assisted squat",
+        "image": "2.jpg"
+      },
+      {
+        "name": "Squat",
+        "image": "3.jpg"
+      },
+      {
+        "name": "Deep squat",
+        "image": "4.jpg"
+      },
+      {
+        "name": "Bulgarian split squat",
+        "image": "5.jpg"
+      },
+      {
+        "name": "Beginner shrimps",
+        "image": "6.jpg"
+      },
+      {
+        "name": "Assisted one-legged squat",
+        "image": "7.jpg"
+      },
+      {
+        "name": "Balance assisted one-legged squat",
+        "image": "8.jpg"
+      },
+      {
+        "name": "Weighted one-legged squat",
+        "image": "9.jpg"
+      },
+      {
+        "name": "One-legged squat",
+        "image": "10.jpg"
+      },
+      {
+        "name": "Renegade pistol",
+        "image": "11.jpg"
+      },
+      {
+        "name": "Intermediate shrimp",
+        "image": "12.jpg"
+      },
+      {
+        "name": "Advanced shrimp",
+        "image": "13.jpg"
+      }
+    ]
+  },
+  "pull-ups": {
+    "url": "http://www.startbodyweight.com/p/pull-up-progression.html",
+    "progressions": [
+      {
+        "name": "Leg assisted pull-up",
+        "image": "1.jpg"
+      },
+      {
+        "name": "Jackknife pull-up",
+        "image": "2.jpg"
+      },
+      {
+        "name": "Eccentric pull-up",
+        "image": "3.jpg"
+      },
+      {
+        "name": "Half pull-up",
+        "image": "4.jpg"
+      },
+      {
+        "name": "Pull-up",
+        "image": "5.jpg"
+      },
+      {
+        "name": "Close grip pull-up",
+        "image": "6.jpg"
+      },
+      {
+        "name": "Wide grip pull-up",
+        "image": "7.jpg"
+      },
+      {
+        "name": "Archer pull-up",
+        "image": "8.jpg"
+      },
+      {
+        "name": "Sternum pull-up",
+        "image": "9.jpg"
+      },
+      {
+        "name": "Belly button pull-up",
+        "image": "10.jpg"
+      },
+      {
+        "name": "One-arm towel-assisted pull-up",
+        "image": "11.jpg"
+      },
+      {
+        "name": "One-arm towel-assisted pull-up and eccentric",
+        "image": "12.jpg"
+      },
+      {
+        "name": "Half one-arm pull-up",
+        "image": "13.jpg"
+      },
+      {
+        "name": "One-arm pull-up",
+        "image": "14.jpg"
+      }
+    ]
+  },
+  "handstands": {
+    "url": "http://www.startbodyweight.com/p/handstand-push-up-progression.html",
+    "progressions": [
+      {
+        "name": "Incline pike push-up",
+        "image": "1.jpg"
+      },
+      {
+        "name": "Incline pike diamond push-up",
+        "image": "2.jpg"
+      },
+      {
+        "name": "Pike push-up",
+        "image": "3.jpg"
+      },
+      {
+        "name": "Pike diamond push-up",
+        "image": "4.jpg"
+      },
+      {
+        "name": "Decline pike push-up",
+        "image": "5.jpg"
+      },
+      {
+        "name": "Decline pike diamond push-up",
+        "image": "6.jpg"
+      },
+      {
+        "name": "Wall-bent waist handstand push-up",
+        "image": "7.jpg"
+      },
+      {
+        "name": "Wall-bent waist handstand diamond push-up",
+        "image": "8.jpg"
+      },
+      {
+        "name": "Wall half-handstand push-up",
+        "image": "9.jpg"
+      },
+      {
+        "name": "Wall handstand push-up",
+        "image": "10.jpg"
+      },
+      {
+        "name": "Wall handstand diamond push-up",
+        "image": "11.jpg"
+      },
+      {
+        "name": "Wall handstand raised push-up",
+        "image": "12.jpg"
+      }
+    ]
+  },
+  "leg-raises": {
+    "url": "http://www.startbodyweight.com/p/leg-raises-progression.html",
+    "progressions": [
+      {
+        "name": "Flat knee raise",
+        "image": "1.jpg"
+      },
+      {
+        "name": "Flat bent-leg raise",
+        "image": "2.jpg"
+      },
+      {
+        "name": "Flat straight-leg raise",
+        "image": "3.jpg"
+      },
+      {
+        "name": "Forearm knee raise",
+        "image": "4.jpg"
+      },
+      {
+        "name": "Hanging knee raise",
+        "image": "5.jpg"
+      },
+      {
+        "name": "Forearm bent-leg raise",
+        "image": "6.jpg"
+      },
+      {
+        "name": "Hanging bent-leg raise",
+        "image": "7.jpg"
+      },
+      {
+        "name": "Forearm straight-leg raise",
+        "image": "8.jpg"
+      },
+      {
+        "name": "Hanging straight-leg raise",
+        "image": "9.jpg"
+      },
+      {
+        "name": "Hanging bent-leg V-raise",
+        "image": "10.jpg"
+      },
+      {
+        "name": "Hanging straight-leg V-raise",
+        "image": "11.jpg"
+      },
+      {
+        "name": "Hanging fan raise",
+        "image": "12.jpg"
+      },
+      {
+        "name": "Hanging V-raise windshield-wipers",
+        "image": "13.jpg"
+      },
+      {
+        "name": "One-arm hanging leg raise",
+        "image": "14.jpg"
+      }
+    ]
+  },
+  "push-ups": {
+    "url": "http://www.startbodyweight.com/p/push-up-progression.html",
+    "progressions": [
+      {
+        "name": "Wall push-up",
+        "image": "1.jpg"
+      },
+      {
+        "name": "Box push-up",
+        "image": "2.jpg"
+      },
+      {
+        "name": "Three-quarter push-up",
+        "image": "3.jpg"
+      },
+      {
+        "name": "Three-quarter push-up + 5s eccentrics",
+        "image": "4.jpg"
+      },
+      {
+        "name": "Push-up",
+        "image": "5.jpg"
+      },
+      {
+        "name": "Elbows-in push-up",
+        "image": "6.jpg"
+      },
+      {
+        "name": "Diamond push-up",
+        "image": "7.jpg"
+      },
+      {
+        "name": "Uneven push-up",
+        "image": "8.jpg"
+      },
+      {
+        "name": "Decline push-up",
+        "image": "9.jpg"
+      },
+      {
+        "name": "Decline elbows-in push-up",
+        "image": "10.jpg"
+      },
+      {
+        "name": "Decline diamond push-up",
+        "image": "11.jpg"
+      },
+      {
+        "name": "Wall one-arm push-up",
+        "image": "12.jpg"
+      },
+      {
+        "name": "Incline one-arm push-up",
+        "image": "13.jpg"
+      },
+      {
+        "name": "One-arm push-up",
+        "image": "14.jpg"
+      },
+      {
+        "name": "Decline one-arm push-up",
+        "image": "15.jpg"
+      }
+    ]
+  },
+  "dips": {
+    "url": "http://www.startbodyweight.com/p/dip-progression.html",
+    "progressions": [
+      {
+        "name": "Bent-knee dip",
+        "image": "1.jpg"
+      },
+      {
+        "name": "Straight-leg dip",
+        "image": "2.jpg"
+      },
+      {
+        "name": "One elevated leg, straight-leg dip",
+        "image": "3.jpg"
+      },
+      {
+        "name": "Elevated legs dip",
+        "image": "4.jpg"
+      },
+      {
+        "name": "One extended leg, elevated legs dip",
+        "image": "5.jpg"
+      },
+      {
+        "name": "Legs supported dip",
+        "image": "6.jpg"
+      },
+      {
+        "name": "One-leg supported dip",
+        "image": "7.jpg"
+      },
+      {
+        "name": "Jumping and 5s eccentric dip",
+        "image": "8.jpg"
+      },
+      {
+        "name": "Half-dips",
+        "image": "9.jpg"
+      },
+      {
+        "name": "Dips",
+        "image": "10.jpg"
+      },
+      {
+        "name": "Legs-forward dip",
+        "image": "11.jpg"
+      },
+      {
+        "name": "Modified Russian dip",
+        "image": "12.jpg"
+      },
+      {
+        "name": "Russian dip",
+        "image": "13.jpg"
+      }
+    ]
+  },
+  "pulls": {
+    "url": "http://www.startbodyweight.com/p/horizontal-pulls-progression.html",
+    "progressions": [
+      {
+        "name": "Vertical pull",
+        "image": "1.jpg"
+      },
+      {
+        "name": "Vertical pull with a towel",
+        "image": "2.jpg"
+      },
+      {
+        "name": "Inverted rows, bent legs",
+        "image": "3.jpg"
+      },
+      {
+        "name": "Inverted rows, straight legs",
+        "image": "4.jpg"
+      },
+      {
+        "name": "Inverted rows, one leg extended",
+        "image": "5.jpg"
+      },
+      {
+        "name": "Inverted rows, elevated legs",
+        "image": "6.jpg"
+      },
+      {
+        "name": "Inverted rows, elevated legs, one leg extended",
+        "image": "7.jpg"
+      },
+      {
+        "name": "Tuck-knees front-lever row",
+        "image": "8.jpg"
+      },
+      {
+        "name": "Advanced tuck-knees row",
+        "image": "9.jpg"
+      },
+      {
+        "name": "One tuck knee, one leg extended row",
+        "image": "10.jpg"
+      },
+      {
+        "name": "Straddle legs front lever row",
+        "image": "11.jpg"
+      },
+      {
+        "name": "Front lever row",
+        "image": "12.jpg"
+      }
+    ]
+  },
+  "planks": {
+    "url": "http://www.startbodyweight.com/p/plank-progression.html",
+    "progressions": [
+      {
+        "name": "Kneeling plank",
+        "image": "1.jpg"
+      },
+      {
+        "name": "Kneeling side plank",
+        "image": "2.jpg"
+      },
+      {
+        "name": "Plank",
+        "image": "3.jpg"
+      },
+      {
+        "name": "Side plank",
+        "image": "4.jpg"
+      },
+      {
+        "name": "Decline plank",
+        "image": "5.jpg"
+      },
+      {
+        "name": "Leg-lift plank",
+        "image": "6.jpg"
+      },
+      {
+        "name": "Arm and leg lift plank",
+        "image": "7.jpg"
+      },
+      {
+        "name": "Arm and leg life side plank",
+        "image": "8.jpg"
+      },
+      {
+        "name": "Wall plank",
+        "image": "9.jpg"
+      }
+    ]
+  }
 }
