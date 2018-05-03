@@ -12,7 +12,7 @@ class Workout extends Component {
   }
 
   render() {
-    return 'hi';
+    return 'hi me';
   }
 } 
 
