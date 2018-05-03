@@ -1,5 +1,23 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Workout = () => <div>Hell this is Workout.</div>;
+import ExcercisesContext from '../contexts/ExcercisesContext';
 
-export default Workout;
+class Workout extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      
+    }
+  }
+
+  render() {
+
+  }
+} 
+
+export default props => (
+  <ExcercisesContext.Consumer>
+    {contextProps => <Workout {...props} {...contextProps} />}
+  </ExcercisesContext.Consumer>
+);
