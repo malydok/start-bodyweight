@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 
-import ExcercisesContext from '../contexts/ExcercisesContext';
+import { ExcercisesContext } from '../contexts/ExcercisesContext';
 
 class Workout extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      
+
     }
   }
 
   render() {
-
+    return 'hi';
   }
 } 
 
