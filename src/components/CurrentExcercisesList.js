@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Col, Row, Button } from 'antd';
 
-import { ExcercisesContext } from '../contexts/ExcercisesContext';
 import excercises from '../data/excercises';
+import { ExcercisesContext } from '../contexts/ExcercisesContext';
 import ExcerciseCard from './ExcerciseCard';
 
 class CurrentExcercisesList extends Component {
