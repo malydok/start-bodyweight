@@ -27,7 +27,8 @@ class Workout extends Component {
     this.state = {
       currentExcercise: 0,
       currentSet: 0,
-      isBreak: false
+      isBreak: false,
+      breakTime: 60
     };
   }
 
@@ -67,9 +68,13 @@ class Workout extends Component {
     });
   };
 
+  onBreakChange = value => {
+    this.setState({ ...this.state, breakTime: value });
+  };
+
   render() {
     const { current } = this.props;
-    const { currentExcercise, currentSet, isBreak } = this.state;
+    const { currentExcercise, currentSet, isBreak, breakTime } = this.state;
     const excerciseType = Object.keys(current)[currentExcercise];
     const excerciseProgress = current[excerciseType];
     const excercise =
@@ -77,6 +82,32 @@ class Workout extends Component {
 
     return (
       <React.Fragment>
+        <Collapse bordered={false} style={{marginBottom: 30}}>
+          <Panel header="Settings" key="1">
+            <Row>
+              <Col span={3}>
+                <p>Break time</p>
+              </Col>
+              <Col span={12}>
+                <Slider
+                  min={30}
+                  max={180}
+                  onChange={this.onBreakChange}
+                  value={this.state.breakTime}
+                />
+              </Col>
+              <Col span={4}>
+                <InputNumber
+                  min={30}
+                  max={180}
+                  style={{ marginLeft: 16 }}
+                  value={this.state.breakTime}
+                  onChange={this.onBreakChange}
+                />
+              </Col>
+            </Row>
+          </Panel>
+        </Collapse>
         <Progress
           percent={this.getPercentDone()}
           style={{ marginBottom: 30 }}
@@ -127,7 +158,7 @@ class Workout extends Component {
             </Button>
             <small style={{ marginLeft: 15 }}>Shortcut: Space</small>
 
-            {isBreak ? <Timer seconds={5} onFinished={this.endBreak} /> : ''}
+            {isBreak ? <Timer seconds={breakTime} onFinished={this.endBreak} /> : ''}
           </Col>
         </Row>
       </React.Fragment>
