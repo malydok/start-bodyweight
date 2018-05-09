@@ -23,20 +23,25 @@ class Timer extends Component {
   }
 
   componentWillUnmount() {
-    clearInterval(this.timerID);
+    clearInterval(this.state.timerID);
   }
 
   timerTick = () => {
     const { seconds, timerID } = this.state;
+    if (seconds <= 1) {
+      clearInterval(this.state.timerID);
+      this.props.onFinished();
+      return;
+    }
     this.setState({
-      seconds: seconds - 1,
-      timerID
+      ...this.state,
+      seconds: seconds - 1
     });
   };
 
   setTimer = () => {
     this.setState({
-      seconds: this.state.seconds,
+      ...this.state,
       timerID: setInterval(this.timerTick, 1000)
     });
   };
@@ -52,7 +57,8 @@ class Workout extends Component {
 
     this.state = {
       currentExcercise: 0,
-      currentSet: 0
+      currentSet: 0,
+      isBreak: false
     };
   }
 
@@ -63,26 +69,35 @@ class Workout extends Component {
 
   nextExcercise = () => {
     this.setState({
+      ...this.state,
       currentExcercise: this.state.currentExcercise + 1,
-      currentSet: 0
+      currentSet: 0,
+      isBreak: true
     });
   };
 
   nextSet = () => {
-    const set = this.state.currentSet;
-    if (set >= 2) {
+    if (this.state.currentSet >= 2) {
       this.nextExcercise();
     } else {
       this.setState({
-        currentExcercise: this.state.currentExcercise,
-        currentSet: set + 1
+        ...this.state,
+        currentSet: this.state.currentSet + 1,
+        isBreak: true
       });
     }
   };
 
+  endBreak = () => {
+    this.setState({
+      ...this.state,
+      isBreak: false
+    });
+  };
+
   render() {
     const { current } = this.props;
-    const { currentExcercise, currentSet } = this.state;
+    const { currentExcercise, currentSet, isBreak } = this.state;
     const excerciseType = Object.keys(current)[currentExcercise];
     const excerciseProgress = current[excerciseType];
     const excercise =
@@ -94,7 +109,7 @@ class Workout extends Component {
           percent={this.getPercentDone()}
           style={{ marginBottom: 30 }}
         />
-        {/* <Timer seconds={60}/> */}
+
         <Row gutter={16}>
           <Col span={5}>
             <Steps direction="vertical" current={currentExcercise}>
@@ -130,9 +145,17 @@ class Workout extends Component {
             >
               <img src={`/images/${excerciseType}/${excercise.image}`} alt="" />
             </Card>
-            <Button size="large" onClick={this.nextSet}>
-              Done
+            <Button
+              type="primary"
+              size="large"
+              onClick={this.nextSet}
+              disabled={isBreak}
+            >
+              Next set
             </Button>
+            <small style={{ marginLeft: 15 }}>Shortcut: Space</small>
+
+            {isBreak ? <Timer seconds={5} onFinished={this.endBreak} /> : ''}
           </Col>
         </Row>
       </React.Fragment>
