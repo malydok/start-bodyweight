@@ -1,55 +1,24 @@
 import React, { Component } from 'react';
-import { Row, Col, Steps, Progress, Card, Button } from 'antd';
+import {
+  Row,
+  Col,
+  Steps,
+  Progress,
+  Card,
+  Button,
+  Collapse,
+  Slider,
+  InputNumber
+} from 'antd';
 
 import excercises from '../data/excercises';
 import { ExcercisesContext } from '../contexts/ExcercisesContext';
 import capitalizeFirstLetter from '../util/capitalize-first-letter';
 import repsFromDay from '../util/reps-from-day';
+import Timer from '../components/Timer';
 
 const Step = Steps.Step;
-
-class Timer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      seconds: this.props.seconds,
-      timerID: null
-    };
-  }
-
-  componentDidMount() {
-    this.setTimer();
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.state.timerID);
-  }
-
-  timerTick = () => {
-    const { seconds, timerID } = this.state;
-    if (seconds <= 1) {
-      clearInterval(this.state.timerID);
-      this.props.onFinished();
-      return;
-    }
-    this.setState({
-      ...this.state,
-      seconds: seconds - 1
-    });
-  };
-
-  setTimer = () => {
-    this.setState({
-      ...this.state,
-      timerID: setInterval(this.timerTick, 1000)
-    });
-  };
-
-  render() {
-    return <p>{this.state.seconds}</p>;
-  }
-}
+const Panel = Collapse.Panel;
 
 class Workout extends Component {
   constructor(props) {
@@ -77,6 +46,9 @@ class Workout extends Component {
   };
 
   nextSet = () => {
+    if (this.state.isBreak) {
+      return;
+    }
     if (this.state.currentSet >= 2) {
       this.nextExcercise();
     } else {
