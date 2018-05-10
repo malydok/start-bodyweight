@@ -82,7 +82,7 @@ class Workout extends Component {
 
     return (
       <React.Fragment>
-        <Collapse bordered={false} style={{marginBottom: 30}}>
+        <Collapse bordered={false} style={{ marginBottom: 30 }}>
           <Panel header="Settings" key="1">
             <Row>
               <Col span={3}>
@@ -154,11 +154,12 @@ class Workout extends Component {
               onClick={this.nextSet}
               disabled={isBreak}
             >
-              Next set
+              {isBreak ? (
+                <Timer seconds={breakTime} onFinished={this.endBreak} />
+              ) : (
+                'Next set'
+              )}
             </Button>
-            <small style={{ marginLeft: 15 }}>Shortcut: Space</small>
-
-            {isBreak ? <Timer seconds={breakTime} onFinished={this.endBreak} /> : ''}
           </Col>
         </Row>
       </React.Fragment>

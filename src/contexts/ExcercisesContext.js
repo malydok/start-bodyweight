@@ -4,8 +4,8 @@ import excercises from '../data/excercises';
 export const defaultExcercises = Object.keys(excercises).reduce(
   (values, type) => {
     values[type] = {
-      progression: 0,
-      day: 0
+      progression: 2,
+      day: 8
     };
     return values;
   },
