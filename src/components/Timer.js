@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 
 class Timer extends Component {
   constructor(props) {
@@ -7,11 +7,10 @@ class Timer extends Component {
     this.state = {
       seconds: this.props.seconds,
     };
-    this.timerID = null;
   }
 
   componentDidMount() {
-    this.setTimer();
+    this.timerID = setInterval(this.timerTick, 1000);
   }
 
   componentWillUnmount() {
@@ -25,14 +24,9 @@ class Timer extends Component {
       this.props.onFinished();
       return;
     }
-    this.setState({
-      ...this.state,
-      seconds: seconds - 1
-    });
-  };
-
-  setTimer = () => {
-    this.timerID = setInterval(this.timerTick, 1000);
+    this.setState(prevState => ({
+      seconds: prevState.seconds - 1
+    }));
   };
 
   render() {
