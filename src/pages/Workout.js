@@ -4,7 +4,6 @@ import {
   Col,
   Steps,
   Progress,
-  Card,
   Button,
   Collapse,
   Slider,
@@ -38,12 +37,11 @@ class Workout extends Component {
   };
 
   nextExcercise = () => {
-    this.setState({
-      ...this.state,
-      currentExcercise: this.state.currentExcercise + 1,
+    this.setState(prevState => ({
+      currentExcercise: prevState.currentExcercise + 1,
       currentSet: 0,
       isBreak: true
-    });
+    }));
   };
 
   nextSet = () => {
@@ -53,23 +51,21 @@ class Workout extends Component {
     if (this.state.currentSet >= 2) {
       this.nextExcercise();
     } else {
-      this.setState({
-        ...this.state,
-        currentSet: this.state.currentSet + 1,
+      this.setState(prevState => ({
+        currentSet: prevState.currentSet + 1,
         isBreak: true
-      });
+      }));
     }
   };
 
   endBreak = () => {
     this.setState({
-      ...this.state,
       isBreak: false
     });
   };
 
   onBreakChange = value => {
-    this.setState({ ...this.state, breakTime: value });
+    this.setState({ breakTime: value });
   };
 
   render() {
@@ -80,90 +76,68 @@ class Workout extends Component {
     const excercise =
       excercises[excerciseType].progressions[excerciseProgress.progression];
 
-    return (
-      <React.Fragment>
+    return <React.Fragment>
         <Collapse bordered={false} style={{ marginBottom: 30 }}>
           <Panel header="Settings" key="1">
+            <hr style={{ opacity: 0.2, marginBottom: 25 }} />
             <Row>
-              <Col span={3}>
-                <p>Break time</p>
+              <Col span={2}>
+                <p style={{ lineHeight: 2.5 }}>Rest time</p>
               </Col>
               <Col span={12}>
-                <Slider
-                  min={30}
-                  max={180}
-                  onChange={this.onBreakChange}
-                  value={this.state.breakTime}
-                />
+                <Slider min={30} max={180} onChange={this.onBreakChange} value={this.state.breakTime} />
               </Col>
               <Col span={4}>
-                <InputNumber
-                  min={30}
-                  max={180}
-                  style={{ marginLeft: 16 }}
-                  value={this.state.breakTime}
-                  onChange={this.onBreakChange}
-                />
+                <InputNumber min={30} max={180} style={{ marginLeft: 16 }} value={this.state.breakTime} onChange={this.onBreakChange} />
               </Col>
             </Row>
           </Panel>
         </Collapse>
-        <Progress
-          percent={this.getPercentDone()}
-          style={{ marginBottom: 30 }}
-        />
 
-        <Row gutter={16}>
-          <Col span={5}>
-            <Steps direction="vertical" current={currentExcercise}>
-              {Object.keys(current)
-                .filter(item => item !== 'dips')
-                .map((type, index) => (
-                  <Step
-                    key={type}
-                    title={capitalizeFirstLetter(type)}
-                    description={
-                      excercises[type].progressions[
-                        excerciseProgress.progression
-                      ].name
-                    }
-                  />
-                ))}
-            </Steps>
-          </Col>
-          <Col span={5}>
-            <Steps size="small" direction="vertical" current={currentSet}>
-              {repsFromDay(excerciseProgress.day)
-                .split(' ')
-                .map((rep, index) => (
-                  <Step key={index} title={'Set'} description={`${rep} reps`} />
-                ))}
-            </Steps>
-          </Col>
-          <Col span={10}>
-            <Card
-              title={[excercise.name]}
-              bordered={false}
-              style={{ marginBottom: 16 }}
-            >
+        <div style={{ backgroundColor: 'white', padding: 30 }}>
+          <Progress percent={this.getPercentDone()} style={{ marginBottom: 30 }} />
+          <Row gutter={16}>
+            <Col span={5}>
+              <Steps direction="vertical" current={currentExcercise}>
+                {Object.keys(current)
+                  .filter(item => item !== 'dips')
+                  .map((type, index) => (
+                    <Step
+                      key={type}
+                      title={capitalizeFirstLetter(type)}
+                      description={
+                        excercises[type].progressions[
+                          excerciseProgress.progression
+                        ].name
+                      }
+                    />
+                  ))}
+              </Steps>
+            </Col>
+            <Col span={5}>
+              <Steps size="small" direction="vertical" current={currentSet}>
+                {repsFromDay(excerciseProgress.day)
+                  .split(' ')
+                  .map((rep, index) => (
+                    <Step
+                      key={index}
+                      title={'Set'}
+                      description={`${rep} reps`}
+                    />
+                  ))}
+              </Steps>
+            </Col>
+            <Col span={10}>
+              <h2 style={{ marginBottom: 16 }}>{excercise.name}</h2>
               <img src={`/images/${excerciseType}/${excercise.image}`} alt="" />
-            </Card>
-            <Button
-              type="primary"
-              size="large"
-              onClick={this.nextSet}
-              disabled={isBreak}
-            >
-              {isBreak ? (
-                <Timer seconds={breakTime} onFinished={this.endBreak} />
-              ) : (
-                'Next set'
-              )}
-            </Button>
-          </Col>
-        </Row>
-      </React.Fragment>
-    );
+              <hr style={{ opacity: 0.2, marginTop: 30, marginBottom: 30 }} />
+              <Button type="primary" size="large" onClick={this.nextSet} disabled={isBreak}>
+                {isBreak ? <Timer seconds={breakTime} onFinished={this.endBreak} /> : 'Next set'}
+              </Button>
+            </Col>
+          </Row>
+        </div>
+      </React.Fragment>;
   }
 }
 

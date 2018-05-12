@@ -25,10 +25,9 @@ class App extends Component {
   }
 
   updateProgression = (type, newState) => {
-    this.setState(state => ({
-      ...state,
+    this.setState(prevState => ({
       current: {
-        ...state.current,
+        ...prevState.current,
         [type]: newState
       }
     }));
