@@ -88,7 +88,8 @@ class Workout extends Component {
                 <Slider min={30} max={180} onChange={this.onBreakChange} value={this.state.breakTime} />
               </Col>
               <Col span={4}>
-                <InputNumber min={30} max={180} style={{ marginLeft: 16 }} value={this.state.breakTime} onChange={this.onBreakChange} />
+                <InputNumber min={30} max={180} style={{ marginLeft: 16, marginRight: 6 }} value={this.state.breakTime} onChange={this.onBreakChange} />
+                seconds
               </Col>
             </Row>
           </Panel>
