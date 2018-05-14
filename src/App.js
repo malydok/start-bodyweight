@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Layout } from 'antd';
 
 import {
@@ -7,9 +7,7 @@ import {
   ExcercisesContext
 } from './contexts/ExcercisesContext';
 import NavMenu from './NavMenu';
-import Workout from './pages/Workout';
-import MyProgress from './pages/MyProgress';
-import SingleProgression from './pages/SingleProgression';
+import Routes from './Routes';
 
 const { Footer, Sider, Content } = Layout;
 
@@ -34,7 +32,7 @@ class App extends Component {
   };
 
   render = () => (
-    <Router>
+    <BrowserRouter>
       <ExcercisesContext.Provider value={this.state}>
         <Layout>
           <Sider style={{ minHeight: '100vh' }}>
@@ -45,9 +43,7 @@ class App extends Component {
           </Sider>
           <Layout>
             <Content style={{ padding: '30px 50px' }}>
-              <Route exact path="/" component={Workout} />
-              <Route path="/my-progress" component={MyProgress} />
-              <Route path="/progression/:type" component={SingleProgression} />
+              <Routes />
             </Content>
             <Footer>
               Content and routine taken from&nbsp;
@@ -58,7 +54,7 @@ class App extends Component {
           </Layout>
         </Layout>
       </ExcercisesContext.Provider>
-    </Router>
+    </BrowserRouter>
   );
 }
 

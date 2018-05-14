@@ -76,7 +76,8 @@ class Workout extends Component {
     const excercise =
       excercises[excerciseType].progressions[excerciseProgress.progression];
 
-    return <React.Fragment>
+    return (
+      <React.Fragment>
         <Collapse bordered={false} style={{ marginBottom: 30 }}>
           <Panel header="Settings" key="1">
             <hr style={{ opacity: 0.2, marginBottom: 25 }} />
@@ -85,10 +86,21 @@ class Workout extends Component {
                 <p style={{ lineHeight: 2.5 }}>Rest time</p>
               </Col>
               <Col span={12}>
-                <Slider min={30} max={180} onChange={this.onBreakChange} value={this.state.breakTime} />
+                <Slider
+                  min={30}
+                  max={180}
+                  onChange={this.onBreakChange}
+                  value={this.state.breakTime}
+                />
               </Col>
               <Col span={4}>
-                <InputNumber min={30} max={180} style={{ marginLeft: 16, marginRight: 6 }} value={this.state.breakTime} onChange={this.onBreakChange} />
+                <InputNumber
+                  min={30}
+                  max={180}
+                  style={{ marginLeft: 16, marginRight: 6 }}
+                  value={this.state.breakTime}
+                  onChange={this.onBreakChange}
+                />
                 seconds
               </Col>
             </Row>
@@ -96,7 +108,10 @@ class Workout extends Component {
         </Collapse>
 
         <div style={{ backgroundColor: 'white', padding: 30 }}>
-          <Progress percent={this.getPercentDone()} style={{ marginBottom: 30 }} />
+          <Progress
+            percent={this.getPercentDone()}
+            style={{ marginBottom: 30 }}
+          />
           <Row gutter={16}>
             <Col span={5}>
               <Steps direction="vertical" current={currentExcercise}>
@@ -132,13 +147,23 @@ class Workout extends Component {
               <h2 style={{ marginBottom: 16 }}>{excercise.name}</h2>
               <img src={`/images/${excerciseType}/${excercise.image}`} alt="" />
               <hr style={{ opacity: 0.2, marginTop: 30, marginBottom: 30 }} />
-              <Button type="primary" size="large" onClick={this.nextSet} disabled={isBreak}>
-                {isBreak ? <Timer seconds={breakTime} onFinished={this.endBreak} /> : 'Next set'}
+              <Button
+                type="primary"
+                size="large"
+                onClick={this.nextSet}
+                disabled={isBreak}
+              >
+                {isBreak ? (
+                  <Timer seconds={breakTime} onFinished={this.endBreak} />
+                ) : (
+                  'Next set'
+                )}
               </Button>
             </Col>
           </Row>
         </div>
-      </React.Fragment>;
+      </React.Fragment>
+    );
   }
 }
 
