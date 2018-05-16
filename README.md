@@ -1,3 +1,10 @@
+# Bodyweight training app
+
+Inspired by the http://www.startbodyweight.com website and routine, created for personal needs in tracking progress.
+Live URL: https://start-bodyweight.firebaseapp.com
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
