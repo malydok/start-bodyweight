@@ -7,7 +7,7 @@ import 'firebase/auth';
 // import 'firebase/functions';
 
 const config = {
-  apiKey: 'AIzaSyDp27tiKuLQnC3o6ValBUdxhtq1z4nyHIM',
+  apiKey: process.env.REACT_APP_FIREBASE_API,
   authDomain: 'start-bodyweight.firebaseapp.com',
   databaseURL: 'https://start-bodyweight.firebaseio.com',
   projectId: 'start-bodyweight',
@@ -15,3 +15,5 @@ const config = {
   messagingSenderId: '917856758898'
 };
 firebase.initializeApp(config);
+
+export { firebase };
