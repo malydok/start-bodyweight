@@ -1,51 +1,32 @@
 import React, { Component } from 'react';
 import { Col, Row, Button } from 'antd';
 
-import excercises from '../data/excercises';
 import { ExcercisesContext } from '../contexts/ExcercisesContext';
 import ExcerciseCard from './ExcerciseCard';
 
 class CurrentExcercisesList extends Component {
+  actionsNoType = this.props.actions();
+
+  updateAll = action => {
+    const { current } = this.props;
+    Object.keys(current).forEach(action);
+  };
+
   nextProgressions = () => {
-    const { current, updateProgression } = this.props;
-    Object.entries(current).forEach(([type, { progression, day }]) => {
-      const length = excercises[type].progressions.length - 1;
-      updateProgression(type, {
-        progression: Math.min(progression + 1, length),
-        day
-      });
-    });
+    this.updateAll(this.actionsNoType.nextProgression);
   };
   prevProgressions = () => {
-    const { current, updateProgression } = this.props;
-    Object.entries(current).forEach(([type, { progression, day }]) => {
-      updateProgression(type, {
-        progression: Math.max(progression - 1, 0),
-        day
-      });
-    });
+    this.updateAll(this.actionsNoType.prevProgression);
   };
   nextDays = () => {
-    const { current, updateProgression } = this.props;
-    Object.entries(current).forEach(([type, { progression, day }]) => {
-      updateProgression(type, {
-        progression,
-        day: Math.min(day + 1, 12)
-      });
-    });
+    this.updateAll(this.actionsNoType.nextDay);
   };
   prevDays = () => {
-    const { current, updateProgression } = this.props;
-    Object.entries(current).forEach(([type, { progression, day }]) => {
-      updateProgression(type, {
-        progression,
-        day: Math.max(day - 1, 0)
-      });
-    });
+    this.updateAll(this.actionsNoType.prevDay);
   };
 
   render() {
-    const { current, updateProgression } = this.props;
+    const { data, current, actions } = this.props;
     return (
       <Row gutter={16}>
         <h1 style={{ marginBottom: 24 }}>My progressions</h1>
@@ -80,8 +61,8 @@ class CurrentExcercisesList extends Component {
           </Button>
         </div>
         {Object.entries(current).map(([type, { progression, day }]) => {
-          const currentExcercise = excercises[type].progressions[progression];
-          const progressionsCount = excercises[type].progressions.length - 1;
+          const currentExcercise = data[type].progressions[progression];
+          const actionsWithType = actions(type);
           return (
             <Col span={6} key={type}>
               <ExcerciseCard
@@ -89,8 +70,7 @@ class CurrentExcercisesList extends Component {
                 progression={progression}
                 day={day}
                 excercise={currentExcercise}
-                updateProgression={updateProgression}
-                maxProgression={progressionsCount}
+                actions={actionsWithType}
               />
             </Col>
           );

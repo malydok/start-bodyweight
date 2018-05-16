@@ -1,58 +1,72 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Layout } from 'antd';
 
 import {
+  data,
   defaultExcercises,
   ExcercisesContext
 } from './contexts/ExcercisesContext';
-import NavMenu from './NavMenu';
-import Routes from './Routes';
-
-const { Footer, Sider, Content } = Layout;
+import Shell from './Shell';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      data,
       current: defaultExcercises,
-      updateProgression: this.updateProgression,
-      updateAllProgressions: this.updateAllProgressions
+      actions: this.actions
     };
   }
 
-  updateProgression = (type, newState) => {
+  updateCurrent = (type, newState) => {
     this.setState(prevState => ({
       current: {
         ...prevState.current,
-        [type]: newState
+        [type]: {
+          ...prevState.current[type],
+          ...newState
+        }
       }
     }));
   };
 
+  actions = defaultType => ({
+    nextProgression: (type = defaultType) => {
+      const { data, current } = this.state;
+      const currentProgression = current[type].progression;
+      const countExcercises = data[type].progressions.length - 1;
+      this.updateCurrent(type, {
+        progression: Math.min(currentProgression + 1, countExcercises)
+      });
+    },
+    prevProgression: (type = defaultType) => {
+      const { current } = this.state;
+      const currentProgression = current[type].progression;
+      this.updateCurrent(type, {
+        progression: Math.max(currentProgression - 1, 0)
+      });
+    },
+    nextDay: (type = defaultType) => {
+      const { current } = this.state;
+      const currentDay = current[type].day;
+      this.updateCurrent(type, {
+        day: Math.min(currentDay + 1, 12)
+      });
+    },
+    prevDay: (type = defaultType) => {
+      const { current } = this.state;
+      const currentDay = current[type].day;
+      this.updateCurrent(type, {
+        day: Math.max(currentDay - 1, 0)
+      });
+    }
+  });
+
   render = () => (
     <BrowserRouter>
       <ExcercisesContext.Provider value={this.state}>
-        <Layout>
-          <Sider style={{ minHeight: '100vh' }}>
-            <div style={{ padding: '20px 30px', color: 'white' }}>
-              Start bodyweight
-            </div>
-            <NavMenu />
-          </Sider>
-          <Layout>
-            <Content style={{ padding: '30px 50px' }}>
-              <Routes />
-            </Content>
-            <Footer>
-              Content and routine taken from&nbsp;
-              <a href="http://www.startbodyweight.com/">
-                www.startbodyweight.com
-              </a>.
-            </Footer>
-          </Layout>
-        </Layout>
+        <Shell />
       </ExcercisesContext.Provider>
     </BrowserRouter>
   );
