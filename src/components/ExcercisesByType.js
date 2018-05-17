@@ -1,18 +1,18 @@
 import React from 'react';
 import { Row, Col, Button, Card } from 'antd';
 
-import excercises from '../data/excercises';
+import { data } from '../contexts/ExcercisesContext';
 
 const { Meta } = Card;
 
 const ExcercisesByType = ({ type }) => (
   <React.Fragment>
     <h1 style={{ marginBottom: 12 }}>Progressions for {type}</h1>
-    <Button href={excercises[type].url} style={{ marginBottom: 24 }}>
+    <Button href={data[type].url} style={{ marginBottom: 24 }}>
       Description on startbodyweight.com
     </Button>
     <Row gutter={16}>
-      {excercises[type].progressions.map((excercise, index) => (
+      {data[type].progressions.map((excercise, index) => (
         <Col span={4} key={index} style={{ clear: index % 6 === 0 ? 'left' : '' }}>
           <Card
             style={{ marginBottom: 16 }}

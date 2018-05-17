@@ -15,7 +15,6 @@ const NavMenu = () => (
           mode="inline"
           theme="dark"
           defaultSelectedKeys={[location.pathname]}
-          defaultOpenKeys={['progression']}
         >
           <Menu.Item key="/">
             <Link to="/">

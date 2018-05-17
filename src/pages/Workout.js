@@ -90,7 +90,7 @@ class Workout extends Component {
                   min={30}
                   max={180}
                   onChange={this.onBreakChange}
-                  value={this.state.breakTime}
+                  value={breakTime}
                 />
               </Col>
               <Col span={4}>
@@ -98,7 +98,7 @@ class Workout extends Component {
                   min={30}
                   max={180}
                   style={{ marginLeft: 16, marginRight: 6 }}
-                  value={this.state.breakTime}
+                  value={breakTime}
                   onChange={this.onBreakChange}
                 />
                 seconds
