@@ -1,23 +1,14 @@
 import React, { Component } from 'react';
-import {
-  Row,
-  Col,
-  Steps,
-  Progress,
-  Button,
-  Collapse,
-  Slider,
-  InputNumber
-} from 'antd';
+import { Row, Col, Steps, Progress, Button } from 'antd';
 
 import excercises from '../data/excercises';
 import { ExcercisesContext } from '../contexts/ExcercisesContext';
 import capitalizeFirstLetter from '../util/capitalize-first-letter';
 import repsFromDay from '../util/reps-from-day';
 import Timer from '../components/Timer';
+import WorkoutSettings from '../components/WorkoutSettings';
 
 const Step = Steps.Step;
-const Panel = Collapse.Panel;
 
 class Workout extends Component {
   constructor(props) {
@@ -78,34 +69,7 @@ class Workout extends Component {
 
     return (
       <React.Fragment>
-        <Collapse bordered={false} style={{ marginBottom: 30 }}>
-          <Panel header="Settings" key="1">
-            <hr style={{ opacity: 0.2, marginBottom: 25 }} />
-            <Row>
-              <Col span={2}>
-                <p style={{ lineHeight: 2.5 }}>Rest time</p>
-              </Col>
-              <Col span={12}>
-                <Slider
-                  min={30}
-                  max={180}
-                  onChange={this.onBreakChange}
-                  value={breakTime}
-                />
-              </Col>
-              <Col span={4}>
-                <InputNumber
-                  min={30}
-                  max={180}
-                  style={{ marginLeft: 16, marginRight: 6 }}
-                  value={breakTime}
-                  onChange={this.onBreakChange}
-                />
-                seconds
-              </Col>
-            </Row>
-          </Panel>
-        </Collapse>
+        <WorkoutSettings onChange={this.onBreakChange} time={breakTime} />
 
         <div style={{ backgroundColor: 'white', padding: 30 }}>
           <Progress
@@ -117,7 +81,7 @@ class Workout extends Component {
               <Steps direction="vertical" current={currentExcercise}>
                 {Object.keys(current)
                   .filter(item => item !== 'dips')
-                  .map((type, index) => (
+                  .map(type => (
                     <Step
                       key={type}
                       title={capitalizeFirstLetter(type)}
