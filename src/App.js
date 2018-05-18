@@ -31,37 +31,56 @@ class App extends Component {
     }));
   };
 
-  actions = defaultType => ({
-    nextProgression: (type = defaultType) => {
+  actions = defaultType => {
+    
+    const nextProgression = (type = defaultType) => {
       const { data, current } = this.state;
       const currentProgression = current[type].progression;
       const countExcercises = data[type].progressions.length - 1;
       this.updateCurrent(type, {
         progression: Math.min(currentProgression + 1, countExcercises)
       });
-    },
-    prevProgression: (type = defaultType) => {
+    };
+    const prevProgression = (type = defaultType) => {
       const { current } = this.state;
       const currentProgression = current[type].progression;
       this.updateCurrent(type, {
         progression: Math.max(currentProgression - 1, 0)
       });
-    },
-    nextDay: (type = defaultType) => {
+    };
+    const nextDay = (type = defaultType) => {
       const { current } = this.state;
       const currentDay = current[type].day;
+      const currentProgression = current[type].progression;
+      const countExcercises = data[type].progressions.length - 1;
+      const isNextProgression = currentDay === 12;
       this.updateCurrent(type, {
-        day: Math.min(currentDay + 1, 12)
+        day: isNextProgression ? 0 : currentDay + 1
       });
-    },
-    prevDay: (type = defaultType) => {
+      if (isNextProgression && currentProgression < countExcercises) {
+        nextProgression();
+      }
+    };
+    const prevDay = (type = defaultType) => {
       const { current } = this.state;
       const currentDay = current[type].day;
+      const currentProgression = current[type].progression;
+      const isPrevProgression = currentDay === 0;
       this.updateCurrent(type, {
-        day: Math.max(currentDay - 1, 0)
+        day: isPrevProgression ? 12 : currentDay - 1
       });
+      if (isPrevProgression && currentProgression > 0) {
+        prevProgression();
+      }
+    };
+
+    return {
+      nextProgression,
+      prevProgression,
+      nextDay,
+      prevDay
     }
-  });
+  };
 
   render = () => (
     <BrowserRouter>
