@@ -14,14 +14,19 @@ class Workout extends Component {
     super(props);
 
     this.state = {
-      excercises: Object.keys(this.props.current).filter(
-        item => item !== this.props.workoutSettings.skip
-      ),
-      currentExcercise: 6,
+      currentExcercise: 0,
       currentSet: 0,
       isBreak: false,
       isPlanking: false,
       isFinished: false
+    };
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    return {
+      excercises: Object.keys(nextProps.current).filter(
+        item => item !== nextProps.workoutSettings.skip
+      )
     };
   }
 
