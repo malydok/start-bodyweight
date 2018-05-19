@@ -66,6 +66,7 @@ class Workout extends Component {
     const excerciseProgress = current[excerciseType];
     const excercise =
       excercises[excerciseType].progressions[excerciseProgress.progression];
+    const isPlank = excerciseType === 'planks';
 
     return (
       <React.Fragment>
@@ -96,15 +97,22 @@ class Workout extends Component {
             </Col>
             <Col span={5}>
               <Steps size="small" direction="vertical" current={currentSet}>
-                {repsFromDay(excerciseProgress.day)
-                  .split(' ')
-                  .map((rep, index) => (
-                    <Step
-                      key={index}
-                      title={'Set'}
-                      description={`${rep} reps`}
-                    />
-                  ))}
+                {isPlank ? (
+                  <Step
+                    title={'Set'}
+                    description={`${30 + 5 * excerciseProgress.day} seconds`}
+                  />
+                ) : (
+                  repsFromDay(excerciseProgress.day)
+                    .split(' ')
+                    .map((rep, index) => (
+                      <Step
+                        key={index}
+                        title={'Set'}
+                        description={`${rep} reps`}
+                      />
+                    ))
+                )}
               </Steps>
             </Col>
             <Col span={10}>

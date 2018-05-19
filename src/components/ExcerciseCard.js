@@ -42,9 +42,15 @@ const ExcerciseCard = ({ type, progression, day, excercise, actions }) => (
     <p className="excercise-name" style={{ marginTop: 20, marginBottom: 5 }}>
       <strong>{excercise.name}</strong>
     </p>
-    <div>
-      Reps per set: <Tag style={{ marginLeft: 5 }}>{repsFromDay(day)}</Tag>
-    </div>
+    {type === 'planks' ? (
+      <div>
+        Hold for: <Tag style={{ marginLeft: 5 }}>{30 + 5 * day} seconds</Tag>
+      </div>
+    ) : (
+      <div>
+        Reps per set: <Tag style={{ marginLeft: 5 }}>{repsFromDay(day)}</Tag>
+      </div>
+    )}
   </Card>
 );
 

@@ -14,5 +14,6 @@ export const defaultExcercises = Object.keys(data).reduce((values, type) => {
 export const ExcercisesContext = React.createContext({
   data,
   current: defaultExcercises,
-  updateProgression: {}
+  workoutSettings: {},
+  actions: () => {}
 });
