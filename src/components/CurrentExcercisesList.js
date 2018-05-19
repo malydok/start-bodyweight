@@ -5,7 +5,7 @@ import { ExcercisesContext } from '../contexts/ExcercisesContext';
 import ExcerciseCard from './ExcerciseCard';
 
 class CurrentExcercisesList extends Component {
-  actionsNoType = this.props.actions();
+  actionsNoType = this.props.actions.current();
 
   updateAll = action => {
     const { current } = this.props;
@@ -62,7 +62,7 @@ class CurrentExcercisesList extends Component {
         </div>
         {Object.entries(current).map(([type, { progression, day }]) => {
           const currentExcercise = data[type].progressions[progression];
-          const actionsWithType = actions(type);
+          const actionsWithType = actions.current(type);
           return (
             <Col span={6} key={type}>
               <ExcerciseCard

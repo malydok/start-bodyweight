@@ -30,7 +30,7 @@ class Timer extends Component {
   };
 
   render() {
-    return `Rest ${this.state.seconds}s`;
+    return this.state.seconds;
   }
 }
 

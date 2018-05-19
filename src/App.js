@@ -9,12 +9,22 @@ import {
 import Shell from './Shell';
 
 class App extends Component {
-  state = {
-    data,
-    current: defaultExcercises,
-    workoutSettings: {},
-    actions: this.actions
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data,
+      current: defaultExcercises,
+      workoutSettings: {
+        breakTime: 60,
+        skip: 'dips'
+      },
+      actions: {
+        current: this.currentActions,
+        settings: this.settingActions
+      }
+    };
+  }
 
   updateCurrent = (type, newState) => {
     this.setState(prevState => ({
@@ -28,7 +38,29 @@ class App extends Component {
     }));
   };
 
-  actions = defaultType => {
+  updateSettings = setting => {
+    this.setState(prevState => ({
+      workoutSettings: {
+        ...prevState.workoutSettings,
+        ...setting
+      }
+    }));
+  };
+
+  settingActions = {
+    setBreak: value => {
+      this.updateSettings({
+        breakTime: value
+      });
+    },
+    switchSkipped: event => {
+      this.updateSettings({
+        skip: event.target.value
+      });
+    }
+  };
+
+  currentActions = defaultType => {
     const nextProgression = (type = defaultType) => {
       const { data, current } = this.state;
       const countExcercises = data[type].progressions.length - 1;
