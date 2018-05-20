@@ -38,7 +38,8 @@ class Workout extends Component {
   nextExcercise = () => {
     this.setState(prevState => ({
       currentExcercise: prevState.currentExcercise + 1,
-      currentSet: 0
+      currentSet: 0,
+      isBreak: true
     }));
   };
 
@@ -183,6 +184,15 @@ class Workout extends Component {
                     ) : (
                       'Next set'
                     )}
+                  </Button>
+                )}
+                {isBreak && (
+                  <Button
+                    icon="close"
+                    onClick={this.endBreak}
+                    style={{ marginLeft: 15 }}
+                  >
+                    skip
                   </Button>
                 )}
               </Col>
