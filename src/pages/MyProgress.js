@@ -1,8 +1,6 @@
 import React from 'react';
-import CurrentExcercisesList from '../components/CurrentExcercisesList';
+import { CurrentExcercisesList } from '../components';
 
-const MyProgress = () => (
-  <CurrentExcercisesList />
-);
+const MyProgress = () => <CurrentExcercisesList />;
 
 export default MyProgress;

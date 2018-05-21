@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Button, Card } from 'antd';
 
-import { data } from '../contexts/ExcercisesContext';
+import { data } from '../../contexts/ExcercisesContext';
 
 const { Meta } = Card;
 

@@ -3,7 +3,7 @@ import { Route, Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 
 import excercises from './data/excercises';
-import capitalizeFirstLetter from './util/capitalize-first-letter';
+import { capitalizeFirstLetter } from './util';
 
 const { SubMenu } = Menu;
 

@@ -1,4 +1,4 @@
-import repsFromDay from './reps-from-day';
+import repsFromDay from './repsFromDay';
 
 test('calculates correctly', () => {
   expect(repsFromDay(2)).toBe('5 5 4');

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Card, Icon, Tag, Tooltip } from 'antd';
 
-import repsFromDay from '../util/reps-from-day';
-import capitalizeFirstLetter from '../util/capitalize-first-letter';
+import { capitalizeFirstLetter, repsFromDay } from '../../util';
 
 const ExcerciseCard = ({ type, progression, day, excercise, actions }) => (
   <Card

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Col, Row, Button } from 'antd';
 
-import { ExcercisesContext } from '../contexts/ExcercisesContext';
-import ExcerciseCard from './ExcerciseCard';
+import { ExcercisesContext } from '../../contexts/ExcercisesContext';
+import { ExcerciseCard } from '../../components';
 
 class CurrentExcercisesList extends Component {
   actionsNoType = this.props.actions.current();

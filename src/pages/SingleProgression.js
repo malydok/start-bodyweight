@@ -1,5 +1,5 @@
 import React from 'react';
-import ExcercisesByType from '../components/ExcercisesByType';
+import { ExcercisesByType } from '../components';
 
 const SingleProgression = ({ match }) => (
   <ExcercisesByType type={match.params.type} />
