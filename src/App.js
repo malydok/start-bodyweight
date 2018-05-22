@@ -26,18 +26,6 @@ class App extends Component {
     };
   }
 
-  updateCurrent = (type, newState) => {
-    this.setState(prevState => ({
-      current: {
-        ...prevState.current,
-        [type]: {
-          ...prevState.current[type],
-          ...newState
-        }
-      }
-    }));
-  };
-
   updateSettings = setting => {
     this.setState(prevState => ({
       workoutSettings: {
@@ -58,6 +46,18 @@ class App extends Component {
         skip: event.target.value
       });
     }
+  };
+
+  updateCurrent = (type, newState) => {
+    this.setState(prevState => ({
+      current: {
+        ...prevState.current,
+        [type]: {
+          ...prevState.current[type],
+          ...newState
+        }
+      }
+    }));
   };
 
   currentActions = defaultType => {
@@ -83,12 +83,10 @@ class App extends Component {
         current[type].day === setMax &&
         current[type].progression < countExcercises;
       this.updateCurrent(type, {
-        day: isNextProgression
-          ? 0
-          : Math.min(current[type].day + 1, countExcercises)
+        day: isNextProgression ? 0 : Math.min(current[type].day + 1, setMax)
       });
       if (isNextProgression) {
-        nextProgression();
+        nextProgression(type);
       }
     };
     const prevDay = (type = defaultType) => {
@@ -101,7 +99,7 @@ class App extends Component {
         day: isPrevProgression ? setMax : Math.max(0, current[type].day - 1)
       });
       if (isPrevProgression) {
-        prevProgression();
+        prevProgression(type);
       }
     };
 
