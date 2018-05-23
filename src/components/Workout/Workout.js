@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Col, Steps, Progress, Button } from 'antd';
 
-import { data, ExcercisesContext } from '../contexts/ExcercisesContext';
-import { capitalizeFirstLetter, repsFromDay } from '../util';
-import { Timer, WorkoutSettings } from '../components';
+import { capitalizeFirstLetter, repsFromDay } from '../../util';
+import { data, ExcercisesContext } from '../../contexts/ExcercisesContext';
+import { Timer, WorkoutSettings } from '../../components';
 
 const Step = Steps.Step;
 

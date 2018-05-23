@@ -1,13 +1,13 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import Workout from './pages/Workout';
+import WorkoutPage from './pages/WorkoutPage';
 import MyProgress from './pages/MyProgress';
 import SingleProgression from './pages/SingleProgression';
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={Workout} />
+    <Route exact path="/" component={WorkoutPage} />
     <Route path="/my-progress" component={MyProgress} />
     <Route path="/progression/:type" component={SingleProgression} />
   </Switch>
