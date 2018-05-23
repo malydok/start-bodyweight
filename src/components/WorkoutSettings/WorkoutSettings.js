@@ -10,10 +10,10 @@ const WorkoutSettings = ({ actions, settings }) => (
     <Panel header="Settings" key="1">
       <hr style={{ opacity: 0.2, marginBottom: 25 }} />
       <Row>
-        <Col span={2}>
+        <Col span={4}>
           <p style={{ lineHeight: 2.5 }}>Rest time</p>
         </Col>
-        <Col span={12}>
+        <Col span={10}>
           <Slider
             min={30}
             max={180}
@@ -33,10 +33,10 @@ const WorkoutSettings = ({ actions, settings }) => (
         </Col>
       </Row>
       <Row>
-        <Col span={2}>
+        <Col span={4}>
           <p style={{ lineHeight: 2.3 }}>Skipped excercise</p>
         </Col>
-        <Col span={12}>
+        <Col span={10}>
           <RadioGroup
             onChange={actions.switchSkipped}
             defaultValue={settings.skip}
