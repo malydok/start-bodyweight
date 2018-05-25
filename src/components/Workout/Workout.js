@@ -18,6 +18,7 @@ class Workout extends Component {
       isPlanking: false,
       isFinished: false
     };
+    this.ping = new Audio('ping.mp3');
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -38,13 +39,19 @@ class Workout extends Component {
     window.removeEventListener('keypress', this.handleKeyboardShortcut);
   }
 
+  playPing() {
+    this.ping.play();
+  }
+
   handleKeyboardShortcut = event => {
     switch (event.code) {
       case 'Space':
         this.nextSet();
         break;
       case 'KeyS':
-        this.endBreak();
+        this.endBreak(true);
+        break;
+      default:
         break;
     }
   };
@@ -80,7 +87,10 @@ class Workout extends Component {
     }
   };
 
-  endBreak = () => {
+  endBreak = skipPing => {
+    if (!skipPing) {
+      this.playPing();
+    }
     this.setState({
       isBreak: false
     });
@@ -93,8 +103,10 @@ class Workout extends Component {
   };
 
   workoutFinished = () => {
+    this.playPing();
     this.setState(prevState => ({
       currentSet: prevState.currentSet + 1,
+      isPlanking: false,
       isFinished: true
     }));
   };
@@ -215,7 +227,7 @@ class Workout extends Component {
                 {isBreak && (
                   <Button
                     icon="close"
-                    onClick={this.endBreak}
+                    onClick={this.endBreak.bind(this, true)}
                     style={{ marginLeft: 15 }}
                   >
                     skip
