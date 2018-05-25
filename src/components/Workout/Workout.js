@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Steps, Progress, Button } from 'antd';
+import { Row, Col, Steps, Progress, Button, Popover } from 'antd';
 
 import { capitalizeFirstLetter, repsFromDay } from '../../util';
 import { data, ExcercisesContext } from '../../contexts/ExcercisesContext';
@@ -12,7 +12,7 @@ class Workout extends Component {
     super(props);
 
     this.state = {
-      currentExcercise: 0,
+      currentExcercise: 4,
       currentSet: 0,
       isBreak: false,
       isPlanking: false,
@@ -21,12 +21,33 @@ class Workout extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
+    const exerciseTypes = Object.keys(nextProps.current).filter(
+      item => item !== nextProps.workoutSettings.skip
+    );
     return {
-      excercises: Object.keys(nextProps.current).filter(
-        item => item !== nextProps.workoutSettings.skip
-      )
+      excercises: exerciseTypes,
+      plankIndex: exerciseTypes.indexOf('planks')
     };
   }
+
+  componentDidMount() {
+    window.addEventListener('keypress', this.handleKeyboardShortcut);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keypress', this.handleKeyboardShortcut);
+  }
+
+  handleKeyboardShortcut = event => {
+    switch (event.code) {
+      case 'Space':
+        this.nextSet();
+        break;
+      case 'KeyS':
+        this.endBreak();
+        break;
+    }
+  };
 
   getPercentDone = () => {
     const { currentExcercise, currentSet } = this.state;
@@ -43,6 +64,10 @@ class Workout extends Component {
 
   nextSet = () => {
     if (this.state.isBreak) {
+      return;
+    }
+    if (this.state.plankIndex === this.state.currentExcercise) {
+      this.startPlank();
       return;
     }
     if (this.state.currentSet >= 2) {
@@ -68,10 +93,10 @@ class Workout extends Component {
   };
 
   workoutFinished = () => {
-    this.nextSet();
-    this.setState({
+    this.setState(prevState => ({
+      currentSet: prevState.currentSet + 1,
       isFinished: true
-    });
+    }));
   };
 
   render() {
@@ -148,17 +173,20 @@ class Workout extends Component {
                   alt=""
                 />
                 <hr style={{ opacity: 0.2, marginTop: 30, marginBottom: 30 }} />
-                {isPlank ? (
+                {isPlank && !isBreak ? (
                   <Button
                     type="primary"
                     size="large"
-                    onClick={this.startPlank}
+                    onClick={this.nextSet}
                     disabled={isPlanking}
                   >
                     {isPlanking ? (
                       <React.Fragment>
                         Hold for{' '}
-                        <Timer seconds={1} onFinished={this.workoutFinished} />s
+                        <Timer
+                          seconds={plankTime}
+                          onFinished={this.workoutFinished}
+                        />s
                       </React.Fragment>
                     ) : (
                       'Start the timer'
@@ -193,6 +221,24 @@ class Workout extends Component {
                     skip
                   </Button>
                 )}
+                <Popover
+                  placement="right"
+                  content={
+                    <div>
+                      <code style={{ color: '#1890ff' }}>Space</code> - next set
+                      <br />
+                      <code style={{ color: '#1890ff' }}>S</code> - skip rest
+                      break
+                    </div>
+                  }
+                  title="Keyboard shortcuts"
+                >
+                  <Button
+                    shape="circle"
+                    icon="info"
+                    style={{ marginLeft: 15 }}
+                  />
+                </Popover>
               </Col>
             )}
           </Row>
