@@ -11,9 +11,37 @@ const WorkoutSettings = ({ actions, settings }) => (
       <hr style={{ opacity: 0.2, marginBottom: 25 }} />
       <Row>
         <Col span={4}>
-          <p style={{ lineHeight: 2.5 }}>Rest time</p>
+          <p style={{ lineHeight: 2.3 }}>Sound</p>
         </Col>
         <Col span={10}>
+          <RadioGroup
+            onChange={actions.setPlaySound}
+            defaultValue={settings.playSound}
+          >
+            <RadioButton value={true}>On</RadioButton>
+            <RadioButton value={false}>Off</RadioButton>
+          </RadioGroup>
+        </Col>
+      </Row>
+      <Row>
+        <Col span={4}>
+          <p style={{ lineHeight: 2.3 }}>Skipped excercise</p>
+        </Col>
+        <Col span={10}>
+          <RadioGroup
+            onChange={actions.setSkipped}
+            defaultValue={settings.skip}
+          >
+            <RadioButton value="dips">Dips</RadioButton>
+            <RadioButton value="push-ups">Pushups</RadioButton>
+          </RadioGroup>
+        </Col>
+      </Row>
+      <Row>
+        <Col span={4}>
+          <p style={{ lineHeight: 2.5 }}>Rest time</p>
+        </Col>
+        <Col span={16}>
           <Slider
             min={30}
             max={180}
@@ -30,20 +58,6 @@ const WorkoutSettings = ({ actions, settings }) => (
             onChange={actions.setBreak}
           />
           seconds
-        </Col>
-      </Row>
-      <Row>
-        <Col span={4}>
-          <p style={{ lineHeight: 2.3 }}>Skipped excercise</p>
-        </Col>
-        <Col span={10}>
-          <RadioGroup
-            onChange={actions.switchSkipped}
-            defaultValue={settings.skip}
-          >
-            <RadioButton value="dips">Dips</RadioButton>
-            <RadioButton value="push-ups">Pushups</RadioButton>
-          </RadioGroup>
         </Col>
       </Row>
     </Panel>

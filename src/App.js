@@ -17,7 +17,8 @@ class App extends Component {
       current: defaultExcercises,
       workoutSettings: {
         breakTime: 60,
-        skip: 'dips'
+        skip: 'dips',
+        playSound: true
       },
       actions: {
         current: this.currentActions,
@@ -41,9 +42,14 @@ class App extends Component {
         breakTime: value
       });
     },
-    switchSkipped: event => {
+    setSkipped: event => {
       this.updateSettings({
         skip: event.target.value
+      });
+    },
+    setPlaySound: event => {
+      this.updateSettings({
+        playSound: event.target.value
       });
     }
   };

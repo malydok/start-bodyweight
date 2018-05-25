@@ -40,7 +40,9 @@ class Workout extends Component {
   }
 
   playPing() {
-    this.ping.play();
+    if (this.props.workoutSettings.playSound) {
+      this.ping.play();
+    }
   }
 
   handleKeyboardShortcut = event => {
