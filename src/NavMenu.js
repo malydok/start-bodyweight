@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { Menu, Icon } from 'antd';
 
-import excercises from './data/excercises';
+import { data } from './contexts/ExcercisesContext';
 import { capitalizeFirstLetter } from './util';
 
 const { SubMenu } = Menu;
@@ -36,7 +36,7 @@ const NavMenu = () => (
             </span>
           }
         >
-          {Object.keys(excercises).map(type => (
+          {Object.keys(data).map(type => (
             <Menu.Item key={`/progression/${type}`}>
               <Link to={`/progression/${type}`}>
                 {capitalizeFirstLetter(type)}
