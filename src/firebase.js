@@ -7,7 +7,7 @@ import 'firebase/auth';
 // import 'firebase/functions';
 
 const config = {
-  apiKey: process.env.REACT_APP_FIREBASE_API,
+  apiKey: 'AIzaSyDp27tiKuLQnC3o6ValBUdxhtq1z4nyHIM',
   authDomain: 'start-bodyweight.firebaseapp.com',
   databaseURL: 'https://start-bodyweight.firebaseio.com',
   projectId: 'start-bodyweight',
@@ -16,4 +16,26 @@ const config = {
 };
 firebase.initializeApp(config);
 
-export { firebase };
+const auth = firebase.auth();
+let user;
+
+const authRegister = ({ email, password }) =>
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .catch(error => ({ error }));
+
+const authLogin = ({ email, password }) =>
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .catch(error => ({ error }));
+
+const onUserChanged = callback => {
+  auth.onAuthStateChanged(newUser => {
+    user = newUser;
+    callback(newUser);
+  });
+};
+
+const isAuthenticated = () => !!user;
+
+export { authRegister, authLogin, onUserChanged, isAuthenticated };
