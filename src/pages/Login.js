@@ -27,12 +27,11 @@ class Login extends Component {
     this.setState({ isSending: true });
     authLogin(credentials)
       .then(resp => {
-        this.setState({ isSending: false });
+        console.log(resp);
+        this.setState({ isSending: false, redirectToReferrer: true });
         if (resp.error) {
           throw resp.error;
         }
-        console.log(resp);
-        this.setState({ redirectToReferrer: true });
       })
       .catch(error => this.setState({ error: error.message }));
   };
