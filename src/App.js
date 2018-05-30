@@ -118,11 +118,11 @@ class App extends Component {
   };
 
   render = () => (
-    <BrowserRouter>
-      <ExcercisesContext.Provider value={this.state}>
+    <ExcercisesContext.Provider value={this.state}>
+      <BrowserRouter>
         <Shell />
-      </ExcercisesContext.Provider>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ExcercisesContext.Provider>
   );
 }
 
