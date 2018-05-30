@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout } from 'antd';
 
+import AuthMenu from './AuthMenu';
 import NavMenu from './NavMenu';
 import Routes from './Routes';
 
@@ -10,7 +11,8 @@ const Shell = () => (
   <Layout>
     <Sider style={{ minHeight: '100vh' }}>
       <div style={{ padding: '20px 30px', color: 'white' }}>
-        Start bodyweight
+        <p style={{marginBottom: 20}}>Start bodyweight</p>
+        <AuthMenu />
       </div>
       <NavMenu />
     </Sider>
