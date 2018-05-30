@@ -17,7 +17,6 @@ class Login extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
         this.login(values);
       }
     });
@@ -27,20 +26,21 @@ class Login extends Component {
     this.setState({ isSending: true });
     authLogin(credentials)
       .then(resp => {
-        console.log(resp);
-        this.setState({ isSending: false, redirectToReferrer: true });
+        this.setState({ isSending: false });
         if (resp.error) {
           throw resp.error;
         }
+        this.setState({ redirectToReferrer: true });
       })
       .catch(error => this.setState({ error: error.message }));
   };
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { from, registerSuccess } = this.props.location.state || {
+    const { from } = this.props.location.state || {
       from: { pathname: '/' }
     };
+    const { registerSuccess } = this.props.location.state;
     const { redirectToReferrer, isSending, error } = this.state;
 
     if (redirectToReferrer) {
@@ -49,14 +49,15 @@ class Login extends Component {
 
     return (
       <React.Fragment>
-        {registerSuccess && (
-          <Alert
-            message="Registration succeeded, you may now log in"
-            type="success"
-          />
-        )}
         <h1 style={{ marginBottom: 40 }}>Login</h1>
         <Form onSubmit={this.handleSubmit} style={{ maxWidth: 300 }}>
+          {registerSuccess && (
+            <Alert
+              message="Registration succeeded, you may now log in"
+              type="success"
+              style={{ marginBottom: 30 }}
+            />
+          )}
           <FormItem>
             {getFieldDecorator('email', {
               rules: [{ required: true, message: 'Please input your email!' }]

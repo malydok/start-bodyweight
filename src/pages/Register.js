@@ -17,13 +17,12 @@ class Register extends Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
-        this.login(values);
+        this.register(values);
       }
     });
   };
 
-  login = credentials => {
+  register = credentials => {
     this.setState({ isSending: true });
     authRegister(credentials)
       .then(resp => {

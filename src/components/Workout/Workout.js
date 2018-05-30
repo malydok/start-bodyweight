@@ -12,7 +12,7 @@ class Workout extends Component {
     super(props);
 
     this.state = {
-      currentExcercise: 4,
+      currentExcercise: 0,
       currentSet: 0,
       isBreak: false,
       isPlanking: false,

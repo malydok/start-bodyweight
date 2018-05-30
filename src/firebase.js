@@ -29,13 +29,12 @@ const authLogin = ({ email, password }) =>
     .signInWithEmailAndPassword(email, password)
     .catch(error => ({ error }));
 
-const onUserChanged = callback => {
-  auth.onAuthStateChanged(newUser => {
-    user = newUser;
-    callback(newUser);
-  });
-};
+
+auth.onAuthStateChanged(newUser => {
+  user = newUser;
+  console.log(user);
+});
 
 const isAuthenticated = () => !!user;
 
-export { authRegister, authLogin, onUserChanged, isAuthenticated };
+export { authRegister, authLogin, isAuthenticated };
