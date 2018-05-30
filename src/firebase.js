@@ -17,7 +17,6 @@ const config = {
 firebase.initializeApp(config);
 
 const auth = firebase.auth();
-let user;
 
 const authRegister = ({ email, password }) =>
   auth
@@ -29,12 +28,15 @@ const authLogin = ({ email, password }) =>
     .signInWithEmailAndPassword(email, password)
     .catch(error => ({ error }));
 
+const onAuthChange = callback => {
+  auth.onAuthStateChanged(newUser => {
+    if (newUser) {
+      callback({ 
+        email: newUser.email, 
+        uid: newUser.uid 
+      });
+    }
+  });
+};
 
-auth.onAuthStateChanged(newUser => {
-  user = newUser;
-  console.log(user);
-});
-
-const isAuthenticated = () => !!user;
-
-export { authRegister, authLogin, isAuthenticated };
+export { authRegister, authLogin, onAuthChange };

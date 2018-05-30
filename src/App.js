@@ -7,6 +7,7 @@ import {
   ExcercisesContext
 } from './contexts/ExcercisesContext';
 import Shell from './Shell';
+import { onAuthChange } from './firebase';
 
 class App extends Component {
   constructor(props) {
@@ -23,8 +24,17 @@ class App extends Component {
       actions: {
         current: this.currentActions,
         settings: this.settingActions
-      }
+      },
+      user: null
     };
+  }
+
+  componentDidMount() {
+    onAuthChange(user => {
+      this.setState({
+        user
+      });
+    });
   }
 
   updateSettings = setting => {
