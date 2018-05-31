@@ -28,15 +28,18 @@ const authLogin = ({ email, password }) =>
     .signInWithEmailAndPassword(email, password)
     .catch(error => ({ error }));
 
+const authSignOut = () =>
+  auth.signOut()
+
 const onAuthChange = callback => {
   auth.onAuthStateChanged(newUser => {
-    if (newUser) {
-      callback({ 
-        email: newUser.email, 
-        uid: newUser.uid 
-      });
-    }
+    callback(
+      newUser && {
+        email: newUser.email,
+        uid: newUser.uid
+      }
+    );
   });
 };
 
-export { authRegister, authLogin, onAuthChange };
+export { authRegister, authLogin, authSignOut, onAuthChange };

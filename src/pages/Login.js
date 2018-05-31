@@ -40,7 +40,7 @@ class Login extends Component {
     const { from } = this.props.location.state || {
       from: { pathname: '/' }
     };
-    const { registerSuccess } = this.props.location.state;
+    const { registerSuccess } = this.props.location.state || {};
     const { redirectToReferrer, isSending, error } = this.state;
 
     if (redirectToReferrer) {
