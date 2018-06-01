@@ -40,4 +40,21 @@ const onAuthChange = callback => {
   });
 };
 
-export { authRegister, authLogin, authSignOut, onAuthChange };
+const getUserSettings = userId => 
+  database
+    .ref(`/users/${userId}`)
+    .once('value')
+    .then(snapshot => snapshot.val());
+
+const setUserSettings = (userId, values) =>
+  database.ref(`/users/${userId}`)
+    .set(values);
+
+export {
+  authRegister,
+  authLogin,
+  authSignOut,
+  onAuthChange,
+  getUserSettings,
+  setUserSettings
+};

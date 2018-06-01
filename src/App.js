@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import debounce from 'lodash/debounce';
 
 import {
   data,
@@ -7,7 +8,7 @@ import {
   ExcercisesContext
 } from './contexts/ExcercisesContext';
 import Shell from './Shell';
-import { onAuthChange } from './firebase';
+import { onAuthChange, getUserSettings, setUserSettings } from './firebase';
 
 class App extends Component {
   constructor(props) {
@@ -29,21 +30,46 @@ class App extends Component {
     };
   }
 
+  readFromDatabase = userId => {
+    getUserSettings(userId).then((userInfo) => {
+      if (userInfo) {
+        this.setState(userInfo);
+      } else {
+        this.persistToDatabase();
+      }
+    });
+  };
+
+  persistToDatabase = () => {
+    const { user, current, workoutSettings } = this.state;
+    if (user) {
+      setUserSettings(user.uid, { current, workoutSettings });
+    }
+  };
+
+  debouncedPersist = debounce(this.persistToDatabase, 500);
+
   componentDidMount() {
     onAuthChange(user => {
       this.setState({
         user
       });
+      if (user) {
+        this.readFromDatabase(user.uid);
+      }
     });
   }
 
   updateSettings = setting => {
-    this.setState(prevState => ({
-      workoutSettings: {
-        ...prevState.workoutSettings,
-        ...setting
-      }
-    }));
+    this.setState(
+      prevState => ({
+        workoutSettings: {
+          ...prevState.workoutSettings,
+          ...setting
+        }
+      }),
+      this.debouncedPersist
+    );
   };
 
   settingActions = {
@@ -65,15 +91,15 @@ class App extends Component {
   };
 
   updateCurrent = (type, newState) => {
-    this.setState(prevState => ({
-      current: {
-        ...prevState.current,
-        [type]: {
-          ...prevState.current[type],
-          ...newState
+    this.setState(
+      prevState => ({
+        current: {
+          ...prevState.current,
+          [type]: { ...prevState.current[type], ...newState }
         }
-      }
-    }));
+      }),
+      this.debouncedPersist
+    );
   };
 
   currentActions = defaultType => {
