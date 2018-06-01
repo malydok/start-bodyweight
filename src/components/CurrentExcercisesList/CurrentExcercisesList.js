@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row, Button } from 'antd';
 
-import { ExcercisesContext } from '../../contexts/ExcercisesContext';
+import { excerciseOrder, ExcercisesContext } from '../../contexts/ExcercisesContext';
 import { ExcerciseCard } from '../../components';
 
 class CurrentExcercisesList extends Component {
@@ -60,7 +60,8 @@ class CurrentExcercisesList extends Component {
             Previous day
           </Button>
         </div>
-        {Object.entries(current).map(([type, { progression, day }]) => {
+        {excerciseOrder.map(type => {
+          const { progression, day } = current[type];
           const currentExcercise = data[type].progressions[progression];
           const actionsWithType = actions.current(type);
           return (

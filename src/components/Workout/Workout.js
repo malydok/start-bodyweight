@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col, Steps, Progress, Button, Popover } from 'antd';
 
 import { capitalizeFirstLetter, repsFromDay } from '../../util';
-import { data, ExcercisesContext } from '../../contexts/ExcercisesContext';
+import { data, excerciseOrder, ExcercisesContext } from '../../contexts/ExcercisesContext';
 import { Timer, WorkoutSettings } from '../../components';
 
 const Step = Steps.Step;
@@ -22,7 +22,7 @@ class Workout extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const exerciseTypes = Object.keys(nextProps.current).filter(
+    const exerciseTypes = excerciseOrder.filter(
       item => item !== nextProps.workoutSettings.skip
     );
     return {
