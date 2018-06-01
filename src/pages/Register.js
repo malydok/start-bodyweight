@@ -9,7 +9,7 @@ const FormItem = Form.Item;
 class Register extends Component {
   state = {
     isSending: false,
-    redirectToLogin: false,
+    redirectToReferrer: false,
     error: ''
   };
 
@@ -30,24 +30,19 @@ class Register extends Component {
         if (resp.error) {
           throw resp.error;
         }
-        this.setState({ redirectToLogin: true });
+        this.setState({ redirectToReferrer: true });
       })
       .catch(error => this.setState({ error: error.message }));
   };
 
   render() {
+    const from = this.props.location.state.from || { pathname: '/' };
+    console.log(from);
     const { getFieldDecorator } = this.props.form;
-    const { redirectToLogin, isSending, error } = this.state;
+    const { redirectToReferrer, isSending, error } = this.state;
 
-    if (redirectToLogin) {
-      return (
-        <Redirect
-          to={{
-            pathname: '/login',
-            state: { registerSuccess: true }
-          }}
-        />
-      );
+    if (redirectToReferrer) {
+      return <Redirect to={from} />;
     }
 
     return (

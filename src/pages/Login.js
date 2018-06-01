@@ -37,10 +37,11 @@ class Login extends Component {
 
   render() {
     const { getFieldDecorator } = this.props.form;
-    const { from } = this.props.location.state || {
-      from: { pathname: '/' }
-    };
-    const { registerSuccess } = this.props.location.state || {};
+    let { from } = this.props.location.state;
+    if (!from || from.pathname === '/register') {
+      from = { pathname: '/' };
+    }
+    console.log(from);
     const { redirectToReferrer, isSending, error } = this.state;
 
     if (redirectToReferrer) {
@@ -51,13 +52,6 @@ class Login extends Component {
       <React.Fragment>
         <h1 style={{ marginBottom: 40 }}>Login</h1>
         <Form onSubmit={this.handleSubmit} style={{ maxWidth: 300 }}>
-          {registerSuccess && (
-            <Alert
-              message="Registration succeeded, you may now log in"
-              type="success"
-              style={{ marginBottom: 30 }}
-            />
-          )}
           <FormItem>
             {getFieldDecorator('email', {
               rules: [{ required: true, message: 'Please input your email!' }]
@@ -95,7 +89,10 @@ class Login extends Component {
             >
               Log in
             </Button>
-            Or <Link to="/register">register now!</Link>
+            Or <Link to={{
+              pathname: '/register',
+              state: { from }
+            }}>register now!</Link>
             <a style={{ float: 'right' }} href="">
               Forgot password
             </a>
