@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
-import { authRegister } from '../firebase';
 import { Form, Icon, Input, Button, Alert } from 'antd';
+
+import { authRegister } from '../server/auth';
 
 const FormItem = Form.Item;
 

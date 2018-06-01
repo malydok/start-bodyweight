@@ -8,7 +8,8 @@ import {
   ExcercisesContext
 } from './contexts/ExcercisesContext';
 import Shell from './Shell';
-import { onAuthChange, getUserSettings, setUserSettings } from './firebase';
+import { onAuthChange } from './server/auth';
+import { getUserSettings, setUserSettings } from './server/database';
 
 class App extends Component {
   constructor(props) {

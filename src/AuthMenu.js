@@ -3,7 +3,7 @@ import { Link, Route } from 'react-router-dom';
 import { Tag } from 'antd';
 
 import { ExcercisesContext } from './contexts/ExcercisesContext';
-import { authSignOut } from './firebase';
+import { authSignOut } from './server/auth';
 
 const AuthMenu = ({ user }) => (
   <Route
