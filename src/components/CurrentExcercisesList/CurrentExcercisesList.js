@@ -65,7 +65,7 @@ class CurrentExcercisesList extends Component {
           const currentExcercise = data[type].progressions[progression];
           const actionsWithType = actions.current(type);
           return (
-            <Col span={6} key={type}>
+            <div style={{ display: 'inline-block', width: 320 }} key={type}>
               <ExcerciseCard
                 type={type}
                 progression={progression}
@@ -73,7 +73,7 @@ class CurrentExcercisesList extends Component {
                 excercise={currentExcercise}
                 actions={actionsWithType}
               />
-            </Col>
+            </div>
           );
         })}
       </Row>

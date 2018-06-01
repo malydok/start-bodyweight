@@ -37,7 +37,7 @@ const ExcerciseCard = ({ type, progression, day, excercise, actions }) => (
       </Tooltip>
     ]}
   >
-    <img src={`/images/${type}/${excercise.image}`} alt="" />
+    <img style={{ maxWidth: '100%' }} src={`/images/${type}/${excercise.image}`} alt="" />
     <p className="excercise-name" style={{ marginTop: 20, marginBottom: 5 }}>
       <strong>{excercise.name}</strong>
     </p>
