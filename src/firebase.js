@@ -1,10 +1,7 @@
 import firebase from 'firebase/app';
 
 import 'firebase/auth';
-// import 'firebase/database';
-// import 'firebase/firestore';
-// import 'firebase/messaging';
-// import 'firebase/functions';
+import 'firebase/database';
 
 const config = {
   apiKey: 'AIzaSyDp27tiKuLQnC3o6ValBUdxhtq1z4nyHIM',
@@ -17,6 +14,7 @@ const config = {
 firebase.initializeApp(config);
 
 const auth = firebase.auth();
+const database = firebase.database();
 
 const authRegister = ({ email, password }) =>
   auth
