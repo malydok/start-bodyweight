@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import debounce from 'lodash/debounce';
+import { message } from 'antd';
 
 import {
   data,
@@ -32,9 +33,12 @@ class App extends Component {
   }
 
   readFromDatabase = userId => {
-    getUserSettings(userId).then((userInfo) => {
+    const hideLoading = message.loading('Loading your settings');
+
+    getUserSettings(userId).then(userInfo => {
+      hideLoading();
       if (userInfo) {
-        this.setState(userInfo);
+        this.setState(userInfo, () => message.success('Loaded your settings'));
       } else {
         this.persistToDatabase();
       }
@@ -44,18 +48,27 @@ class App extends Component {
   persistToDatabase = () => {
     const { user, current, workoutSettings } = this.state;
     if (user) {
-      setUserSettings(user.uid, { current, workoutSettings });
+      setUserSettings(user.uid, {
+        current,
+        workoutSettings
+      }).then(() => message.success('Changes saved'));
     }
   };
 
   debouncedPersist = debounce(this.persistToDatabase, 500);
 
   componentDidMount() {
+    const hideInfo = message.info(
+      'Your settings will not be remembered if you`re not logged in',
+      0
+    );
+
     onAuthChange(user => {
       this.setState({
         user
       });
       if (user) {
+        hideInfo();
         this.readFromDatabase(user.uid);
       }
     });

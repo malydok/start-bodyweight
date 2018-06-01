@@ -11,8 +11,4 @@ const getUserSettings = userId =>
 const setUserSettings = (userId, values) =>
   database.ref(`/users/${userId}`).set(values);
 
-
-export {
-  getUserSettings,
-  setUserSettings
-};
+export { getUserSettings, setUserSettings };
