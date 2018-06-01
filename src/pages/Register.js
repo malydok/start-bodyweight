@@ -37,7 +37,6 @@ class Register extends Component {
 
   render() {
     const from = this.props.location.state.from || { pathname: '/' };
-    console.log(from);
     const { getFieldDecorator } = this.props.form;
     const { redirectToReferrer, isSending, error } = this.state;
 

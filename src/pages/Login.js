@@ -41,7 +41,6 @@ class Login extends Component {
     if (!from || from.pathname === '/register') {
       from = { pathname: '/' };
     }
-    console.log(from);
     const { redirectToReferrer, isSending, error } = this.state;
 
     if (redirectToReferrer) {
