@@ -153,8 +153,7 @@ class Workout extends Component {
                     key={type}
                     title={capitalizeFirstLetter(type)}
                     description={
-                      data[type].progressions[excerciseProgress.progression]
-                        .name
+                      data[type].progressions[Math.min(current[type].progression, data[type].progressions.length - 1)].name
                     }
                   />
                 ))}
